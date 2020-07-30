@@ -1,0 +1,241 @@
+<html lang="en">
+  <head>
+    <title>converter program</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="converter" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head>
+<script>
+//function for converting Mysql to postgresql 
+    function mtp()
+    {
+        //Dictionary that contain keywords and corresponding Postgresql 
+        var dict_list =
+        {
+            INT:'INTEGER(20)',
+            AUTO_INCREMENT:'SERIAL',
+            TINYINT:'SMALLINT',
+            MEDIUMINT:'INTEGER',
+            FLOA:'REAL',
+            DOUBLE:'DOUBLE PRECISION',
+            TINYTEXT:'TEXT',
+            MEDIUMTEXT:'TEXT',
+            LONGTEXT:'TEXT',
+            TINYBLOB:'BYTEA',
+            BLOB:'BYTEA',
+            MEDIUMBLOB:'BYTEA',
+            LONGBLOB:'BYTEA',
+            DATETIME:'TIMESTAMP'
+        };
+        //get the value textarea 
+        var c_text=document.getElementById("demo").value;
+        var s=" ";
+        var str=c_text.split(" ");
+        var i;
+        var k;
+        for(i=0;i<str.length;i++)
+        {
+            var p=str[i].toUpperCase();
+            var flag=true;
+            var j;
+            for (let [key, value] of Object.entries(dict_list))
+            {
+                if(p.startsWith(`${key}`))
+                {
+
+                    if(p.endsWith(","))
+                    {
+                        flag=false;
+                        if(str[i]==str[i].toLowerCase())
+                        {
+                            k=`${value}`.toLowerCase()+",";
+                        }
+                        else
+                        {
+                            k=`${value}`+",";
+                        }
+                    }
+                    else if(p.endsWith(";"))
+                    {
+                        flag=false;
+                        if(str[i]==str[i].toLowerCase())
+                        {
+                            k=`${value}`.toLowerCase()+");";
+                        }
+                        else
+                        {
+                            k=`${value}`+");";
+                        }
+                    }
+                    else
+                    {
+                        flag=false;
+                        if(str[i]==str[i].toLowerCase())
+                        {
+                            k=`${value}`.toLowerCase();
+                        }
+                        else
+                        {
+                            k=`${value}`;
+                        }
+                    }
+                }
+                if(flag==true)
+                {
+                    k=str[i];
+                    k=k.fontcolor("green");
+                }
+            }
+            k=k.fontcolor("red");
+            s=s+k+" ";
+            if(str[i].endsWith(";"))
+            {
+                s=s+"\n";
+            }
+        }
+        //document.write(s);
+        document.getElementById("demo1").innerHTML=s;
+    }
+    function ptm()
+    {
+        var dict_list =
+        {
+            INTEGER:'MEDIUMINT',
+            SERIAL:'AUTO_INCREMENT',
+            REAL:'FLOAT',
+            CHARACTER:'VARCHAR(100)',
+            BYTEA:'BLOB',
+            BOOLEAN:'BOOL',
+            TIMESTAMP:'TIMESTAMP',
+            TIME:'TIME'
+        };
+        var c_text=document.getElementById("demo").value;
+        var s=" ";
+        var str=c_text.split(" ");
+        var i;
+        var k;
+        for(i=0;i<str.length;i++)
+        {
+            var p=str[i].toUpperCase();
+            var flag=true;
+            var j;
+            for (let [key, value] of Object.entries(dict_list))
+            {
+                if(p.startsWith(`${key}`))
+                {
+
+                    if(p.endsWith(","))
+                    {
+                        flag=false;
+                        if(str[i]==str[i].toLowerCase())
+                        {
+                            k=`${value}`.toLowerCase()+",";
+                        }
+                        else
+                        {
+                            k=`${value}`+",";
+                        }
+                    }
+                    else if(p.endsWith(";"))
+                    {
+                        flag=false;
+                        if(str[i]==str[i].toLowerCase())
+                        {
+                            k=`${value}`.toLowerCase()+");";
+                        }
+                        else
+                        {
+                            k=`${value}`+");";
+                        }
+                    }
+                    else
+                    {
+                        flag=false;
+                        if(str[i]==str[i].toLowerCase())
+                        {
+                            k=`${value}`.toLowerCase();
+                        }
+                        else
+                        {
+                            k=`${value}`;
+                        }
+                    }
+                }
+                if(flag==true)
+                {
+                    k=str[i];
+                    k=k.fontcolor("green");
+                }
+            }
+            k=k.fontcolor("red");
+            s=s+k+" ";
+            if(str[i].endsWith(";"))
+            {
+                s=s+"\n";
+            }
+        }
+        //document.write(s);
+        document.getElementById("demo1").innerHTML=s;
+    }
+</script>
+<!--navbar for site-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #0000FF">
+ <a class="navbar-brand" href="#"> Converter  With Query Generation   </a>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarNavDropdown">
+   <ul class="navbar-nav">
+     <li class="nav-item active">
+       <a class="nav-link" href="index.html">Converter<span class="sr-only">(current)</span></a>
+     </li>
+     <li class="nav-item ">
+       <a class="nav-link" href="query.php">Query</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="#">About project</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="#">Contact Us</a>
+     </li>
+   </ul>
+ </div>
+</nav>
+<div style="width:100%;height:50px;background-color:orange;"><h1 align='center' style="color:green">WELCOME HERE  !!...</h1></div>
+<div style="width:100%;height:20px;background-color:orange;">
+<h3 style="color:green;text-align:left;">Enter your code here.....</h3>
+</div>
+<div style="width:100%;height:20px;background-color:orange;">
+<h3  style="color:green;margin-left:900px;">Result:-</h3>
+</div>
+
+<body style="background-color:powderblue" >
+    <center>
+
+        <div class="container-fluid" style="padding: 3%;">
+            <div class="row">
+                
+                <div class="col-sm-5" style="border: 1px solid black;border-radius: 10px;">
+                    <textarea class="form-control" name="demo" id="demo" style="width: 100%;color:blue;background-color:cornsilk;" rows="18">
+
+                    </textarea>
+                </div>
+                <div class="col-sm-2" style="margin-top: 10%;margin-bottom: 10%;">
+                    <button class="btn btn-success" onclick="mtp();">MySQL <i class="fa fa-arrow-circle-right"></i> PostgreSQL</button>
+                    <br><br>
+                    <button class="btn btn-danger" onclick="ptm();">PostgreSQL <i class="fa fa-arrow-circle-right"></i> MySQL</button>
+                </div>
+                
+                <div class="col-sm-5" id="demo1" style="border: 1px solid black;background-color: cornsilk;border-radius: 10px;width: 100%;">
+
+                </div>
+            </div>
+        </div>
+    </center>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>

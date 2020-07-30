@@ -1,0 +1,38 @@
+#Prerequisites :-
+
+steps for installing some software to run the project:-
+
+//Installation of PHP with Apache
+[A].sudo apt install php libapache2-mod-php
+
+//Once  the package installed restart the Apache
+[B].sudo systemctl restart apache2
+
+//Varify the installation
+[C].php -v
+
+//Installation of PostgreSQL in ubuntu
+[A].sudo apt-get update
+[B].sudo apt-get install postgresql postgresql-contrib
+
+Steps for running the project:-
+
+1.First of all download project in your system 
+2.Make change in dbcon.php file to connect your database,update username,password and database name.
+3.Open Google chrome 
+4.Type in ulr:-localhost/Converter
+5.Write your code in Mysql to convert in PostgreSQL
+6.Click on button MysqlPostgreSQL
+7.Get result
+
+//For generating Query 
+1.Click on query that is link present in navbar of project
+2.Choose table name 
+3.click on button that given in navbar to generate query
+4.Get result as basic query for select,select all,insert,delete,update.
+
+
+
+
+
+

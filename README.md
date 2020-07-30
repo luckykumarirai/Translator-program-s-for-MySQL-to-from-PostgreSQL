@@ -1,1 +1,1 @@
-# -Translator-program-s-for-MySQL-to-from-PostgreSQL
+# Translator-program-s-for-MySQL-to-from-PostgreSQL
